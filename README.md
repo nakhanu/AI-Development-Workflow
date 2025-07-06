@@ -1,118 +1,216 @@
-# AI Development Workflow – Week 5 Assignment
+# 🧠 Week 5 Assignment – AI Development Workflow
 
-This repository contains the deliverables for the Week 5 AI assignment focused on applying AI concepts across the lifecycle of problem-solving, from definition to deployment, using a healthcare-based case study.
-
----
-
-## 📁 Contents
-
-- `Critical Thinking.pdf`: PDF with detailed responses for the assignment's Part 3.
-- All code (if any) related to model design or preprocessing.
-- This `README.md` file summarizing the full scope of work.
+This repository contains all deliverables for the Week 5 AI assignment, which covers theoretical, practical, and reflective components of designing and deploying an AI system. It includes structured sections covering short answer questions, a healthcare case study, ethical analysis, and a visual workflow diagram.
 
 ---
 
-## 🧠 Part 1: Short Answer Questions (30 points)
+## 📘 Part 1: Short Answer Questions (30 points)
 
-### 1. Problem Definition
+### 1. Problem Definition (6 pts)
 
-**Problem:** Predicting student dropout rates.  
+**Hypothetical AI Problem:** Predicting student dropout rates.
+
 **Objectives:**
-- Identify students at risk of dropping out.
-- Improve student retention.
-- Provide early intervention strategies.
+- Identify at-risk students early.
+- Recommend targeted interventions.
+- Improve overall student retention.
 
-**Stakeholders:**  
+**Stakeholders:**
 - School Administrators  
-- Academic Advisors  
+- Academic Advisors
 
-**KPI:**  
+**Key Performance Indicator (KPI):**
 - Dropout prediction accuracy.
 
 ---
 
-### 2. Data Collection & Preprocessing
+### 2. Data Collection & Preprocessing (8 pts)
 
 **Data Sources:**
-- Student Information Systems (SIS)
-- Learning Management Systems (LMS)
+- Learning Management System (LMS) activity logs  
+- Student Information System (SIS) records
 
-**Potential Bias:**  
-- Overrepresentation of students from urban schools may skew results.
+**Potential Bias:**
+- Overrepresentation of urban students may introduce bias against rural populations.
 
 **Preprocessing Steps:**
-1. Handle missing attendance/grades.
-2. Normalize numerical features.
-3. Encode categorical variables (e.g., gender, school type).
+1. Handle missing data (e.g., incomplete attendance).
+2. Normalize test scores and grades.
+3. Encode categorical variables like gender and school type.
 
 ---
 
-### 3. Model Development
+### 3. Model Development (8 pts)
 
-**Model Chosen:** Random Forest  
-**Justification:** Robust to overfitting and handles both categorical and numerical data.
+**Chosen Model:** Random Forest
 
-**Data Split:**  
-- Training: 70%  
-- Validation: 15%  
-- Test: 15%  
+**Justification:**  
+Robust to overfitting and works well with mixed data types.
 
-**Hyperparameters Tuned:**
-- `max_depth`: Controls model complexity.
-- `n_estimators`: Number of trees for ensemble strength.
+**Data Split:**
+- Training: 70%
+- Validation: 15%
+- Testing: 15%
+
+**Hyperparameters to Tune:**
+- `n_estimators`: Controls number of trees in the forest.
+- `max_depth`: Prevents overly complex models.
 
 ---
 
-### 4. Evaluation & Deployment
+### 4. Evaluation & Deployment (8 pts)
 
 **Evaluation Metrics:**
-- Accuracy: Measures overall correctness.
-- F1-Score: Balances precision and recall for imbalanced datasets.
+- Accuracy: Measures overall prediction correctness.
+- F1-Score: Balances precision and recall, ideal for imbalanced datasets.
 
 **Concept Drift:**  
-Occurs when data patterns change over time.  
-**Monitoring:** Use dashboards and periodic retraining.
+Changes in data distribution over time that reduce model performance.
 
-**Deployment Challenge:**  
-Ensuring scalability for large student datasets.
+**Monitoring Strategy:**  
+Regular re-evaluation using real-time data and performance dashboards.
+
+**Technical Challenge:**  
+Scaling the model for nationwide deployment across multiple school systems.
 
 ---
 
 ## 🏥 Part 2: Case Study – Hospital Readmission Prediction (40 points)
 
-### Problem Scope
+### Problem Scope (5 pts)
 
-**Problem:** Predict patient readmission within 30 days post-discharge.  
+**Problem:** Predicting hospital readmission risk within 30 days of discharge.
+
 **Objectives:**
-- Reduce readmissions
-- Improve care quality
+- Minimize readmission rates.
+- Optimize patient recovery plans.
+- Reduce healthcare costs.
 
-**Stakeholders:**  
-- Hospital Management  
-- Clinicians
+**Stakeholders:**
+- Hospital Management
+- Clinicians and Care Teams
 
 ---
 
-### Data Strategy
+### Data Strategy (10 pts)
 
-**Data Sources:**
+**Proposed Data Sources:**
 - Electronic Health Records (EHRs)  
-- Patient Demographics
+- Patient demographics & discharge summaries
 
 **Ethical Concerns:**
-- Data privacy (HIPAA compliance)  
-- Algorithmic bias against underserved groups
+- Patient privacy and HIPAA compliance  
+- Algorithmic bias (e.g., against underrepresented groups)
 
 **Preprocessing Pipeline:**
-- Handle missing vitals/labs  
-- Feature engineering (e.g., comorbidity count)  
-- One-hot encoding for categorical values
+1. Handle missing clinical values.
+2. Feature engineering (e.g., comorbidity score, length of stay).
+3. Encode categorical variables like diagnosis codes.
 
 ---
 
-### Model Development
+### Model Development (10 pts)
 
-**Model Chosen:** Logistic Regression  
-**Reason:** Interpretable for clinical use
+**Chosen Model:** Logistic Regression  
+**Reasoning:** High interpretability for clinical use.
 
-**Confusion Matrix Example:**
+**Confusion Matrix (Hypothetical):**
+
+|            | Predicted No | Predicted Yes |
+|------------|--------------|---------------|
+| Actual No  |      50      |      10       |
+| Actual Yes |      5       |      35       |
+
+**Precision:** 35 / (35 + 10) = 0.78  
+**Recall:** 35 / (35 + 5) = 0.875
+
+---
+
+### Deployment Strategy (10 pts)
+
+**Integration Steps:**
+- Build a REST API for real-time integration with the EHR system.
+- Trigger alerts in the clinician dashboard when risk is high.
+
+**Compliance Measures:**
+- Ensure data encryption in transit and at rest.
+- Role-based access control and audit logs.
+
+**Optimization Strategy:**  
+Use dropout regularization and cross-validation to combat overfitting.
+
+---
+
+## 💡 Part 3: Critical Thinking (20 points)
+
+### Ethics & Bias (10 pts)
+
+**Effect of Bias:**  
+Biased training data can lead to misdiagnosis, delayed care, or inappropriate treatment for minority groups.
+
+**Mitigation Strategy:**  
+Use diverse and representative datasets. Apply fairness-aware algorithms and monitor model fairness metrics.
+
+---
+
+### Trade-offs (10 pts)
+
+**Interpretability vs. Accuracy:**  
+In healthcare, highly interpretable models (e.g., logistic regression) are often preferred over complex models (e.g., neural networks) for trust and accountability, even at the cost of a slight dip in accuracy.
+
+**Impact of Limited Resources:**  
+Resource constraints may necessitate simpler, less computationally expensive models like Decision Trees or Logistic Regression over deep learning models.
+
+---
+
+## ✍️ Part 4: Reflection & Workflow Diagram (10 points)
+
+### Reflection (5 pts)
+
+**Challenge:**  
+The hardest part was designing a fair and ethical preprocessing pipeline with limited healthcare data examples.
+
+**Improvement:**  
+With more time, I would explore federated learning to increase data diversity without compromising privacy.
+
+---
+
+### Workflow Diagram (5 pts)
+[Problem Definition]
+↓
+[Data Collection]
+↓
+[Preprocessing & Feature Engineering]
+↓
+[Model Selection & Training]
+↓
+[Evaluation & Validation]
+↓
+[Deployment]
+↓
+[Monitoring & Optimization]
+
+---
+
+## 📦 Submission Checklist
+
+- ✅ PDF Report (5–10 pages): Includes all sections except the diagram
+- ✅ GitHub Repository: Includes this README and any relevant code or outputs
+- ✅ PLP Academy Post: PDF article shared as required
+
+---
+
+## 🔗 References
+
+- Scikit-learn Documentation: https://scikit-learn.org  
+- World Health Organization – AI Ethics in Health  
+- HIPAA Privacy Rule Overview: https://www.hhs.gov/hipaa/
+
+---
+
+### 👤 Author
+
+**Name:** Sophia Nakhanu  
+**Course:** AI Tools & Applications  
+**Institution:** PLP Academy  
+**Date:** July 2025  
