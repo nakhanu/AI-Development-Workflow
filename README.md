@@ -208,9 +208,3 @@ With more time, I would explore federated learning to increase data diversity wi
 
 ---
 
-### 👤 Author
-
-**Name:** Sophia Nakhanu  
-**Course:** AI Tools & Applications  
-**Institution:** PLP Academy  
-**Date:** July 2025  
